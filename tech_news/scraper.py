@@ -96,20 +96,30 @@ def scrape_noticia(html_content):
     # print(fonte_exists[0].text)
     # if fonte_exists[0].text != 'Fontes':
     #     sources = []
+    dict_data = {}
+    # dict = {
+    #     "url": url,
+    #     "title": title,
+    #     "timestamp": timestamp["datetime"],
+    #     "writer": autor,
+    #     "shares_count": contador_compartilhamentos,
+    #     "comments_count": contador_comentarios,
+    #     "summary": summary_text,
+    #     "sources": sources,
+    #     "categories": categorias
+    # }
+    print(timestamp)
+    dict_data["url"] = url
+    dict_data["title"] = title
+    dict_data["timestamp"] = timestamp
+    dict_data["writer"] = autor
+    dict_data["shares_count"] = contador_compartilhamentos
+    dict_data["comments_count"] = contador_comentarios
+    dict_data["summary"] = summary_text
+    dict_data["sources"] = sources
+    dict_data["categories"] = categorias
 
-    dict = {
-        "url": url,
-        "title": title,
-        "timestamp": timestamp["datetime"],
-        "writer": autor,
-        "shares_count": contador_compartilhamentos,
-        "comments_count": contador_comentarios,
-        "summary": summary_text,
-        "sources": sources,
-        "categories": categorias
-    }
-
-    return dict
+    return dict_data
 
 
 # Requisito 5
@@ -130,7 +140,7 @@ class scrapy_crazy:
 
     def timestamp_scrapy(soup):
         timestamp = soup.find('time')
-        return timestamp
+        return timestamp["datetime"]
 
     def writer_scrapy(soup):
         try:
