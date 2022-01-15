@@ -97,7 +97,7 @@ def scrape_noticia(html_content):
     # if fonte_exists[0].text != 'Fontes':
     #     sources = []
 
-    return {
+    dict = {
         "url": url,
         "title": title,
         "timestamp": timestamp["datetime"],
@@ -108,7 +108,8 @@ def scrape_noticia(html_content):
         "sources": sources,
         "categories": categorias
     }
-    """Seu código deve vir aqui"""
+
+    return dict
 
 
 # Requisito 5
